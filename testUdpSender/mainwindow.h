@@ -15,7 +15,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 signals:
-    void sig_receiveNew(QByteArray dataGram);
+    void sig_receiveNew(QByteArray dataGram, int index);
 private slots:
     void on_btn_clicked();   //按钮点击信号
     void processData();
@@ -23,11 +23,13 @@ private slots:
 
 private:
     QString getHost();
+    void getNewDestop();
 
     Ui::MainWindow *ui;
     QUdpSocket* m_sender;   //udp发送端
     QHostAddress mSendhost;
     quint16 mSendport;
     targetDesktopDialog* mpDlg = nullptr;
+    int index = 0;
 };
 #endif // MAINWINDOW_H

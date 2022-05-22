@@ -2,6 +2,7 @@
 #define TARGETDESKTOPDIALOG_H
 
 #include <QDialog>
+#include <QLabel>
 
 namespace Ui {
 class targetDesktopDialog;
@@ -17,7 +18,7 @@ public:
 signals:
     void sig_New();
 public slots:
-    void slot_receiveNew(QByteArray dataGram);
+    void slot_receiveNew(QByteArray dataGram, int index);
 private slots:
 
 private slots:
@@ -29,6 +30,7 @@ private slots:
 
 private:
     Ui::targetDesktopDialog *ui;
+    QLabel* l[36];
 };
 
 #endif // TARGETDESKTOPDIALOG_H

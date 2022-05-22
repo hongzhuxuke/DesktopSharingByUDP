@@ -58,8 +58,10 @@ QString MainWindow::getHost()
 
         strRef.append(" ");
         strRef.append("Broadcast xuke1989");//广播命令 NewDesktop xuke1989
-    return strRef;
+        return strRef;
 }
+
+
 
 void MainWindow::processData()
 {
@@ -85,22 +87,32 @@ void MainWindow::processData()
         else
         {
             qDebug()<< __LINE__<< "xk22 "  << "Sender receive Image" << endl;
-            emit sig_receiveNew(dataGram);
+            emit sig_receiveNew(dataGram, index);
+            index++;
+            getNewDestop();
         }
     }
 }
 
 void MainWindow::slot_GetNew()
 {
-    QByteArray dataRequst=QString("NewDesktop xuke1989").toUtf8(); //获取新页面
-//    m_sender->writeDatagram(dataRequst.data(),
-//                            dataRequst.size(),
-//                            mSendhost,    //udp广播地址
-//                            6666);
-    qDebug()<< __LINE__<< "xk22 " << mSendhost.toString()  << " Sender MainWindow::slot_GetNew()" << endl;
-    m_sender->writeDatagram(dataRequst.data(),
-                            dataRequst.size(),
-                            QHostAddress::Broadcast/*mSendhost*/,    //udp广播地址
-                            6666);
+    index = 0;
+    getNewDestop();
     //on_btn_clicked();
+}
+
+void MainWindow::getNewDestop()
+{
+    if(index<=35)
+    {
+        QByteArray dataRequst=QString("NewDesktop xuke1989 %1").arg(index).toUtf8(); //获取新页面
+
+        qDebug()<< __LINE__<< "xk22 " << mSendhost.toString()  << " Sender MainWindow::slot_GetNew()" << endl;
+        m_sender->writeDatagram(dataRequst.data(),
+                                dataRequst.size(),
+                                /*QHostAddress::Broadcast*/mSendhost,    //udp广播地址
+                                6666);
+    }
+    else{index = 0;}
+
 }
