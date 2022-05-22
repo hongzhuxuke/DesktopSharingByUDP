@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QUdpSocket>
 #include <QHostAddress>
+#include "CSendThread.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,5 +26,7 @@ private:
     quint16 mSendport;
     QPixmap newpixmap;
     QPixmap oldpixmap;
+
+    CSendThread thread;
 };
 #endif // MAINWINDOW_H
