@@ -4,7 +4,7 @@
 #include <QtNetwork>
 #include <QtWidgets>
 #include "targetdesktopdialog.h"
-
+#include <QDir>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
