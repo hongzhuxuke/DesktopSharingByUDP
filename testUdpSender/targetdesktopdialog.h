@@ -27,7 +27,9 @@ private slots:
     void on_btnPre_clicked();
     void on_btnNext_clicked();
 
-
+    bool slot_CloseClicked();
+    void slot_MinClicked();
+    void slot_MaxClicked();
 private:
     Ui::targetDesktopDialog *ui;
     QLabel* l[36];

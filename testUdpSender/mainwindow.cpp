@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    //setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint /*| Qt::WindowStaysOnTopHint*/);
+
     ui->setupUi(this);
      m_sender=new QUdpSocket(this);
      m_sender->bind(7777,QUdpSocket::ShareAddress);
@@ -82,7 +84,7 @@ void MainWindow::processData()
             mSendport = Sendport;
             ui->lineEdit->setText(dataGram + " " +mSendhost.toString()+":"+ mSendport);   //将接收到的数据显示到标签上
 
-            mpDlg->show();
+            mpDlg->showMaximized();
         }
         else
         {

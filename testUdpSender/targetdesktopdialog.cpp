@@ -6,6 +6,8 @@ targetDesktopDialog::targetDesktopDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::targetDesktopDialog)
 {
+    //setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint /*| Qt::WindowStaysOnTopHint*/);
+
     ui->setupUi(this);
     l[0] = ui->l1;
     l[1] = ui->l2;
@@ -80,4 +82,20 @@ void targetDesktopDialog::on_btnPre_clicked()
 void targetDesktopDialog::on_btnNext_clicked()
 {
 
+}
+
+bool targetDesktopDialog::slot_CloseClicked()
+{
+    close();
+    return false;
+}
+
+void targetDesktopDialog::slot_MinClicked()
+{
+    showMinimized();
+}
+
+void targetDesktopDialog::slot_MaxClicked()
+{
+    showMaximized();
 }
