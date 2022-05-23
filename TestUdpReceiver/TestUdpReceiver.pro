@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     CSendThread.cpp \
+    ConfigSetting.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     CSendThread.h \
+    ConfigSetting.h \
     mainwindow.h
 
 FORMS += \
